@@ -2,7 +2,7 @@ package com.telepathicgrunt.repurposedstructures.world.structures.pieces;
 
 import com.google.common.collect.Queues;
 import com.mojang.datafixers.util.Pair;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.misc.structurepiececounter.StructurePieceCountsManager;
 import com.telepathicgrunt.repurposedstructures.mixin.structures.SinglePoolElementAccessor;
 import com.telepathicgrunt.repurposedstructures.mixin.structures.StructurePoolAccessor;
@@ -85,7 +85,7 @@ public class PieceLimitedJigsawManager {
         // Get starting pool
         StructureTemplatePool startPool = startPoolHolder.value();
         if(startPool.size() == 0) {
-            RepurposedStructures.LOGGER.warn("Repurposed Structures: Empty or nonexistent start pool in structure: {}  Crash is imminent", structureID);
+            RepurposedStructuresApi.LOGGER.warn("Repurposed Structures: Empty or nonexistent start pool in structure: {}  Crash is imminent", structureID);
             throw new RuntimeException("Repurposed Structures: Empty or nonexistent start pool in structure: " + structureID + " Crash is imminent");
         }
 
@@ -127,12 +127,12 @@ public class PieceLimitedJigsawManager {
         return Optional.of(new Structure.GenerationStub(new BlockPos(pieceCenterX, pieceCenterY, pieceCenterZ), (structurePiecesBuilder) -> {
             List<PoolElementStructurePiece> components = new ArrayList<>();
             components.add(startPiece);
-            Map<ResourceLocation, StructurePieceCountsManager.RequiredPieceNeeds> requiredPieces = RepurposedStructures.structurePieceCountsManager.getRequirePieces(structureID);
+            Map<ResourceLocation, StructurePieceCountsManager.RequiredPieceNeeds> requiredPieces = RepurposedStructuresApi.structurePieceCountsManager.getRequirePieces(structureID);
             boolean runOnce = requiredPieces == null || requiredPieces.isEmpty();
             Map<ResourceLocation, Integer> currentPieceCounter = new HashMap<>();
             for (int attempts = 0; runOnce || doesNotHaveAllRequiredPieces(components, requiredPieces, currentPieceCounter); attempts++) {
                 if (attempts == 100) {
-                    RepurposedStructures.LOGGER.error(
+                    RepurposedStructuresApi.LOGGER.error(
                             """
                                             
                                     -------------------------------------------------------------------
@@ -246,7 +246,7 @@ public class PieceLimitedJigsawManager {
 
             // Create map clone so we do not modify the original map.
             this.requiredPieces = requiredPieces == null ? new HashMap<>() : new HashMap<>(requiredPieces);
-            this.maximumPieceCounts = new HashMap<>(RepurposedStructures.structurePieceCountsManager.getMaximumCountForPieces(structureID));
+            this.maximumPieceCounts = new HashMap<>(RepurposedStructuresApi.structurePieceCountsManager.getMaximumCountForPieces(structureID));
             this.poolsThatIgnoreBounds = poolsThatIgnoreBounds;
 
             // pieceCounts will keep track of how many of the pieces we are checking were spawned
@@ -285,7 +285,7 @@ public class PieceLimitedJigsawManager {
 
                 // Only continue if we are using the jigsaw pattern registry and if it is not empty
                 if (!(poolOptional.isPresent() && (poolOptional.get().size() != 0 || Objects.equals(jigsawBlockPool, Pools.EMPTY.location())))) {
-                    RepurposedStructures.LOGGER.warn("Repurposed Structures: Empty or nonexistent pool: {} which is being called from {}", jigsawBlockPool, pieceBlueprint instanceof SinglePoolElement ? ((SinglePoolElementAccessor) pieceBlueprint).repurposedstructures_getTemplate().left().get() : "not a SinglePoolElement class");
+                    RepurposedStructuresApi.LOGGER.warn("Repurposed Structures: Empty or nonexistent pool: {} which is being called from {}", jigsawBlockPool, pieceBlueprint instanceof SinglePoolElement ? ((SinglePoolElementAccessor) pieceBlueprint).repurposedstructures_getTemplate().left().get() : "not a SinglePoolElement class");
                     continue;
                 }
 

@@ -23,7 +23,7 @@ archivesBaseName = "${project.modid}_fabric"
 group = project.maven_group
 
 loom {
-	accessWidenerPath = file("src/main/resources/repurposed_structures.accesswidener")
+	accessWidenerPath = file("src/main/resources/repurposed_structures_api.accesswidener")
 }
 
 repositories {

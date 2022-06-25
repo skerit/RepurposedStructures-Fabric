@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.modinit;
 
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.world.predicates.MatterPhaseRuleTest;
 import com.telepathicgrunt.repurposedstructures.world.predicates.PieceOriginAxisAlignedLinearPosRuleTest;
 import com.telepathicgrunt.repurposedstructures.world.predicates.YValuePosRuleTest;
@@ -19,9 +19,9 @@ public final class RSPredicates {
     public static PosRuleTestType<YValuePosRuleTest> Y_VALUE_POS_RULE_TEST = () -> YValuePosRuleTest.CODEC;
 
     public static void registerPredicates() {
-        Registry.register(BuiltInRegistries.RULE_TEST, new ResourceLocation(RepurposedStructures.MODID, "matter_phase_rule_test"), MATTER_PHASE_RULE_TEST);
+        Registry.register(BuiltInRegistries.RULE_TEST, new ResourceLocation(RepurposedStructuresApi.MODID, "matter_phase_rule_test"), MATTER_PHASE_RULE_TEST);
 
-        Registry.register(BuiltInRegistries.POS_RULE_TEST, new ResourceLocation(RepurposedStructures.MODID, "piece_origin_axis_aligned_linear_pos_rule_test"), PIECE_ORIGIN_AXIS_ALIGNED_LINEAR_POS_RULE_TEST);
-        Registry.register(BuiltInRegistries.POS_RULE_TEST, new ResourceLocation(RepurposedStructures.MODID, "y_value_pos_rule_test"), Y_VALUE_POS_RULE_TEST);
+        Registry.register(BuiltInRegistries.POS_RULE_TEST, new ResourceLocation(RepurposedStructuresApi.MODID, "piece_origin_axis_aligned_linear_pos_rule_test"), PIECE_ORIGIN_AXIS_ALIGNED_LINEAR_POS_RULE_TEST);
+        Registry.register(BuiltInRegistries.POS_RULE_TEST, new ResourceLocation(RepurposedStructuresApi.MODID, "y_value_pos_rule_test"), Y_VALUE_POS_RULE_TEST);
     }
 }

@@ -4,7 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;
@@ -23,7 +24,7 @@ import java.util.function.Supplier;
 public class StructurePieceCountsManager extends SimpleJsonResourceReloadListener implements IdentifiableResourceReloadListener {
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().setLenient().disableHtmlEscaping().excludeFieldsWithoutExposeAnnotation().create();
     private Map<ResourceLocation, List<StructurePieceCountsObj>> StructureToPieceCountsObjs = new HashMap<>();
-    private final ResourceLocation STRUCTURE_PIECE_COUNT_MANAGER_ID = new ResourceLocation(RepurposedStructures.MODID, "structure_piece_count_manager");
+    private final ResourceLocation STRUCTURE_PIECE_COUNT_MANAGER_ID = new ResourceLocation(RepurposedStructuresApi.MODID, "structure_piece_count_manager");
     private final Map<ResourceLocation, Map<ResourceLocation, RequiredPieceNeeds>> cachedRequirePiecesMap = new HashMap<>();
     private final Map<ResourceLocation, Map<ResourceLocation, Integer>> cachedMaxCountPiecesMap = new HashMap<>();
 
@@ -46,7 +47,7 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
                         piecesSpawnCounts.remove(entry);
                     }
                 },
-                () -> RepurposedStructures.LOGGER.error("Repurposed Structures Error: Found {} entry has a condition that does not exist. Extra info: {}", entry.nbtPieceName, fileIdentifier));
+                () -> RepurposedStructuresApi.LOGGER.error("Repurposed Structures Error: Found {} entry has a condition that does not exist. Extra info: {}", entry.nbtPieceName, fileIdentifier));
             }
         }
         return piecesSpawnCounts;
@@ -60,7 +61,7 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
                 mapBuilder.put(fileIdentifier, getStructurePieceCountsObjs(fileIdentifier, jsonElement));
             }
             catch (Exception e) {
-                RepurposedStructures.LOGGER.error("Repurposed Structures Error: Couldn't parse rs_pieces_spawn_counts file {} - JSON looks like: {}", fileIdentifier, jsonElement, e);
+                RepurposedStructuresApi.LOGGER.error("Repurposed Structures Error: Couldn't parse rs_pieces_spawn_counts file {} - JSON looks like: {}", fileIdentifier, jsonElement, e);
             }
         });
         this.StructureToPieceCountsObjs = mapBuilder;
@@ -74,7 +75,7 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
                 this.StructureToPieceCountsObjs.computeIfAbsent(structureRL, rl -> new ArrayList<>()).addAll(getStructurePieceCountsObjs(structureRL, jsonElement));
             }
             catch (Exception e) {
-                RepurposedStructures.LOGGER.error("Repurposed Structures Error: Couldn't parse rs_pieces_spawn_counts file {} - JSON looks like: {}", structureRL, jsonElement, e);
+                RepurposedStructuresApi.LOGGER.error("Repurposed Structures Error: Couldn't parse rs_pieces_spawn_counts file {} - JSON looks like: {}", structureRL, jsonElement, e);
             }
         });
     }

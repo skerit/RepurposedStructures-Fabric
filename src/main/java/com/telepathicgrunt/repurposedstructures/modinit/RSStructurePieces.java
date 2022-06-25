@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.modinit;
 
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.world.structures.pieces.LegacyOceanBottomSinglePoolElement;
 import com.telepathicgrunt.repurposedstructures.world.structures.pieces.MansionStructurePiece;
 import com.telepathicgrunt.repurposedstructures.world.structures.pieces.MirroringSingleJigsawPiece;
@@ -20,8 +20,8 @@ public final class RSStructurePieces {
 
     public static void registerStructurePieces() {
         // needed to make template pool based mansions work
-        MIRROR_SINGLE = Registry.register(BuiltInRegistries.STRUCTURE_POOL_ELEMENT, new ResourceLocation(RepurposedStructures.MODID, "mirroring_single_pool_element"), () -> MirroringSingleJigsawPiece.CODEC);
-        LEGACY_OCEAN_BOTTOM = Registry.register(BuiltInRegistries.STRUCTURE_POOL_ELEMENT, new ResourceLocation(RepurposedStructures.MODID, "legacy_ocean_bottom_single_pool_element"), () -> LegacyOceanBottomSinglePoolElement.CODEC);
-        MANSION_STRUCTURE_PIECE = Registry.register(BuiltInRegistries.STRUCTURE_PIECE, new ResourceLocation(RepurposedStructures.MODID, "mansion_structure_piece"), MansionStructurePiece::new);
+        MIRROR_SINGLE = Registry.register(BuiltInRegistries.STRUCTURE_POOL_ELEMENT, new ResourceLocation(RepurposedStructuresApi.MODID, "mirroring_single_pool_element"), () -> MirroringSingleJigsawPiece.CODEC);
+        LEGACY_OCEAN_BOTTOM = Registry.register(BuiltInRegistries.STRUCTURE_POOL_ELEMENT, new ResourceLocation(RepurposedStructuresApi.MODID, "legacy_ocean_bottom_single_pool_element"), () -> LegacyOceanBottomSinglePoolElement.CODEC);
+        MANSION_STRUCTURE_PIECE = Registry.register(BuiltInRegistries.STRUCTURE_PIECE, new ResourceLocation(RepurposedStructuresApi.MODID, "mansion_structure_piece"), MansionStructurePiece::new);
     }
 }

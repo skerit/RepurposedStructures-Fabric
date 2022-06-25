@@ -2,7 +2,7 @@ package com.telepathicgrunt.repurposedstructures.world.features;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.world.features.configs.MinecartConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
@@ -50,7 +50,7 @@ public class MinecartFeature extends Feature<MinecartConfig> {
         Optional<StructureTemplate> template = templatemanager.get(context.config().nbtPath);
 
         if (template.isEmpty()) {
-            RepurposedStructures.LOGGER.warn(context.config().nbtPath.toString() + " NTB does not exist!");
+            RepurposedStructuresApi.LOGGER.warn(context.config().nbtPath.toString() + " NTB does not exist!");
             return false;
         }
 

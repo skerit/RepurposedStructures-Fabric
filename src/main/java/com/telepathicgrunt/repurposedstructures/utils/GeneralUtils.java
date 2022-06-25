@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.mojang.datafixers.util.Pair;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.mixin.resources.NamespaceResourceManagerAccessor;
 import com.telepathicgrunt.repurposedstructures.mixin.resources.ReloadableResourceManagerImplAccessor;
 import net.minecraft.core.BlockPos;
@@ -288,7 +288,7 @@ public final class GeneralUtils {
                             map.get(fileID).add(countsJSONElement);
                         }
                         else {
-                            RepurposedStructures.LOGGER.error(
+                            RepurposedStructuresApi.LOGGER.error(
                                     "(Repurposed Structures {} MERGER) Couldn't load data file {} from {} as it's null or empty",
                                     dataType,
                                     fileID,
@@ -298,7 +298,7 @@ public final class GeneralUtils {
                 }
             }
             catch (IllegalArgumentException | IOException | JsonParseException exception) {
-                RepurposedStructures.LOGGER.error(
+                RepurposedStructuresApi.LOGGER.error(
                         "(Repurposed Structures {} MERGER) Couldn't parse data file {} from {}",
                         dataType,
                         fileID,
@@ -315,11 +315,11 @@ public final class GeneralUtils {
     public static boolean isInvalidLootTableFound(MinecraftServer minecraftServer, Map.Entry<ResourceLocation, ResourceLocation> entry) {
         boolean invalidLootTableFound = false;
         if(minecraftServer.getLootTables().get(entry.getKey()) == LootTable.EMPTY) {
-            RepurposedStructures.LOGGER.error("Unable to find loot table key: {}", entry.getKey());
+            RepurposedStructuresApi.LOGGER.error("Unable to find loot table key: {}", entry.getKey());
             invalidLootTableFound = true;
         }
         if(minecraftServer.getLootTables().get(entry.getValue()) == LootTable.EMPTY) {
-            RepurposedStructures.LOGGER.error("Unable to find loot table value: {}", entry.getValue());
+            RepurposedStructuresApi.LOGGER.error("Unable to find loot table value: {}", entry.getValue());
             invalidLootTableFound = true;
         }
         return invalidLootTableFound;
@@ -328,7 +328,7 @@ public final class GeneralUtils {
     public static boolean isMissingLootImporting(MinecraftServer minecraftServer, Set<ResourceLocation> tableKeys) {
         AtomicBoolean invalidLootTableFound = new AtomicBoolean(false);
         minecraftServer.getLootTables().getIds().forEach(rl -> {
-            if(rl.getNamespace().equals(RepurposedStructures.MODID) && !tableKeys.contains(rl)) {
+            if(rl.getNamespace().equals(RepurposedStructuresApi.MODID) && !tableKeys.contains(rl)) {
                 if(rl.getPath().contains("mansions") && rl.getPath().contains("storage")) {
                     return;
                 }
@@ -345,7 +345,7 @@ public final class GeneralUtils {
                     return;
                 }
 
-                RepurposedStructures.LOGGER.error("No loot importing found for: {}", rl);
+                RepurposedStructuresApi.LOGGER.error("No loot importing found for: {}", rl);
                 invalidLootTableFound.set(true);
             }
         });

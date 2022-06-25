@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.mixin.features.DungeonFeatureAccessor;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.minecraft.Util;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class MobSpawnerManager extends SimpleJsonResourceReloadListener implements IdentifiableResourceReloadListener {
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().setLenient().disableHtmlEscaping().excludeFieldsWithoutExposeAnnotation().create();
     private Map<ResourceLocation, List<MobSpawnerObj>> spawnerMap = ImmutableMap.of();
-    private final ResourceLocation MOB_SPAWNER_MANAGER_ID = new ResourceLocation(RepurposedStructures.MODID, "mob_spawner_manager");
+    private final ResourceLocation MOB_SPAWNER_MANAGER_ID = new ResourceLocation(RepurposedStructuresApi.MODID, "mob_spawner_manager");
 
     public MobSpawnerManager() {
         super(GSON, "rs_spawners");
@@ -50,7 +50,7 @@ public class MobSpawnerManager extends SimpleJsonResourceReloadListener implemen
                 builder.put(fileIdentifier, spawnerMobEntries);
             }
             catch (Exception e) {
-                RepurposedStructures.LOGGER.error("Repurposed Structures Error: Couldn't parse spawner mob list {}", fileIdentifier, e);
+                RepurposedStructuresApi.LOGGER.error("Repurposed Structures Error: Couldn't parse spawner mob list {}", fileIdentifier, e);
             }
         });
         this.spawnerMap = builder.build();
@@ -59,7 +59,7 @@ public class MobSpawnerManager extends SimpleJsonResourceReloadListener implemen
     public EntityType<?> getSpawnerMob(ResourceLocation spawnerJsonEntry, RandomSource random) {
         List<MobSpawnerObj> spawnerMobEntries = this.spawnerMap.get(spawnerJsonEntry);
         if(spawnerMobEntries == null) {
-            RepurposedStructures.LOGGER.log(Level.ERROR,"\n***************************************\nFailed to get mob. Please check that "+spawnerJsonEntry+".json is correct or that no other mod is interfering with how vanilla reads data folders. Let TelepathicGrunt know about this too!\n***************************************");
+            RepurposedStructuresApi.LOGGER.log(Level.ERROR,"\n***************************************\nFailed to get mob. Please check that "+spawnerJsonEntry+".json is correct or that no other mod is interfering with how vanilla reads data folders. Let TelepathicGrunt know about this too!\n***************************************");
             return Util.getRandom(DungeonFeatureAccessor.getMOBS(), random);
         }
 
@@ -85,7 +85,7 @@ public class MobSpawnerManager extends SimpleJsonResourceReloadListener implemen
             }
         }
         catch(Exception e) {
-            RepurposedStructures.LOGGER.log(Level.ERROR,"\n***************************************\nFailed to get mob. Please check that "+spawnerJsonEntry+".json is correct and let Telepathicgrunt (mod author) know he broke the mob spawner code!\n***************************************");
+            RepurposedStructuresApi.LOGGER.log(Level.ERROR,"\n***************************************\nFailed to get mob. Please check that "+spawnerJsonEntry+".json is correct and let Telepathicgrunt (mod author) know he broke the mob spawner code!\n***************************************");
             return EntityType.PIG;
         }
     }

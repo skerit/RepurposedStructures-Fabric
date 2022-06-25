@@ -1,7 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.modinit;
 
 import com.mojang.serialization.Codec;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.world.placements.MinusEightPlacement;
 import com.telepathicgrunt.repurposedstructures.world.placements.SnapToLowerNonAirPlacement;
 import com.telepathicgrunt.repurposedstructures.world.placements.UnlimitedCountPlacement;
@@ -19,9 +19,9 @@ public final class RSPlacements {
     public static PlacementModifierType<?> SNAP_TO_LOWER_NON_AIR_PLACEMENT;
 
     public static void registerPlacements() {
-        MINUS_EIGHT_PLACEMENT = register(new ResourceLocation(RepurposedStructures.MODID, "minus_eight_placement"), MinusEightPlacement.CODEC);
-        UNLIMITED_COUNT = register(new ResourceLocation(RepurposedStructures.MODID, "unlimited_count"), UnlimitedCountPlacement.CODEC);
-        SNAP_TO_LOWER_NON_AIR_PLACEMENT = register(new ResourceLocation(RepurposedStructures.MODID, "snap_to_lower_non_air_placement"), SnapToLowerNonAirPlacement.CODEC);
+        MINUS_EIGHT_PLACEMENT = register(new ResourceLocation(RepurposedStructuresApi.MODID, "minus_eight_placement"), MinusEightPlacement.CODEC);
+        UNLIMITED_COUNT = register(new ResourceLocation(RepurposedStructuresApi.MODID, "unlimited_count"), UnlimitedCountPlacement.CODEC);
+        SNAP_TO_LOWER_NON_AIR_PLACEMENT = register(new ResourceLocation(RepurposedStructuresApi.MODID, "snap_to_lower_non_air_placement"), SnapToLowerNonAirPlacement.CODEC);
     }
 
     private static <P extends PlacementModifier> PlacementModifierType<P> register(ResourceLocation resourceLocation, Codec<P> codec) {

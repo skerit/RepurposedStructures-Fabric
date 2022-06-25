@@ -3,7 +3,7 @@ package com.telepathicgrunt.repurposedstructures.misc.structurepiececounter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.utils.GeneralUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -32,7 +32,7 @@ public final class StructurePieceCountsAdditionsMerger {
      */
     private static void parseCountsAndBeginMerger(Map<ResourceLocation, List<JsonElement>> countsAdditionJSON) {
         for (Map.Entry<ResourceLocation, List<JsonElement>> entry : countsAdditionJSON.entrySet()) {
-            RepurposedStructures.structurePieceCountsManager.parseAndAddCountsJSONObj(entry.getKey(), entry.getValue());
+            RepurposedStructuresApi.structurePieceCountsManager.parseAndAddCountsJSONObj(entry.getKey(), entry.getValue());
         }
     }
 }

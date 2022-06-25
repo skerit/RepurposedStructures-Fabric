@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.modinit;
 
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.world.features.*;
 import com.telepathicgrunt.repurposedstructures.world.features.configs.GenericMobConfig;
 import com.telepathicgrunt.repurposedstructures.world.features.configs.MinecartConfig;
@@ -55,34 +55,34 @@ public final class RSFeatures {
     public static Feature<MineshaftSupportConfig> MINESHAFT_SUPPORTS = new MineshaftSupport(MineshaftSupportConfig.CODEC);
 
     public static void registerFeatures() {
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "nbt_dungeon"), NBT_DUNGEONS);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "nbt_feature"), NBT_FEATURE);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "nbt_dungeon"), NBT_DUNGEONS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "nbt_feature"), NBT_FEATURE);
 
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "wither_skeleton_with_bow"), WITHER_SKELETON_WITH_BOW);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "shulker_mob"), SHULKER_MOB);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "drowned_with_armor"), DROWNED_WITH_ARMOR);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "skeleton"), SKELETON);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "skeleton_horseman"), SKELETON_HORSEMAN);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "wither_skeleton_with_bow"), WITHER_SKELETON_WITH_BOW);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "shulker_mob"), SHULKER_MOB);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "drowned_with_armor"), DROWNED_WITH_ARMOR);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "skeleton"), SKELETON);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "skeleton_horseman"), SKELETON_HORSEMAN);
 
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "post_process_connecting_blocks"), POST_PROCESS_CONNECTING_BLOCKS);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_breakage"), STRUCTURE_BREAKAGE);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_chains"), STRUCTURE_CHAINS);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_end_rod_chains"), STRUCTURE_END_ROD_CHAINS);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_chorus"), STRUCTURE_CHORUS);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_crimson_plants"), STRUCTURE_CRIMSON_PLANTS);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_fire"), STRUCTURE_FIRE);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_netherwart"), STRUCTURE_NETHERWART);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_seagrass"), STRUCTURE_SEAGRASS);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_vines"), STRUCTURE_VINES);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_vines_and_leaves"), STRUCTURE_VINES_AND_LEAVES);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_warped_plants"), STRUCTURE_WARPED_PLANTS);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_vine_breakage"), STRUCTURE_VINE_BREAKAGE);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_grass"), STRUCTURE_GRASS);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_flowers"), STRUCTURE_FLOWERS);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "structure_powder_snow"), STRUCTURE_POWDER_SNOW);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "underwater_block_pile"), UNDERWATER_BLOCK_PILE);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "post_process_connecting_blocks"), POST_PROCESS_CONNECTING_BLOCKS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_breakage"), STRUCTURE_BREAKAGE);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_chains"), STRUCTURE_CHAINS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_end_rod_chains"), STRUCTURE_END_ROD_CHAINS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_chorus"), STRUCTURE_CHORUS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_crimson_plants"), STRUCTURE_CRIMSON_PLANTS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_fire"), STRUCTURE_FIRE);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_netherwart"), STRUCTURE_NETHERWART);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_seagrass"), STRUCTURE_SEAGRASS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_vines"), STRUCTURE_VINES);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_vines_and_leaves"), STRUCTURE_VINES_AND_LEAVES);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_warped_plants"), STRUCTURE_WARPED_PLANTS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_vine_breakage"), STRUCTURE_VINE_BREAKAGE);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_grass"), STRUCTURE_GRASS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_flowers"), STRUCTURE_FLOWERS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "structure_powder_snow"), STRUCTURE_POWDER_SNOW);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "underwater_block_pile"), UNDERWATER_BLOCK_PILE);
 
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "mineshaft_minecarts"), MINESHAFT_MINECARTS);
-        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructures.MODID, "mineshaft_supports"), MINESHAFT_SUPPORTS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "mineshaft_minecarts"), MINESHAFT_MINECARTS);
+        Registry.register(BuiltInRegistries.FEATURE, new ResourceLocation(RepurposedStructuresApi.MODID, "mineshaft_supports"), MINESHAFT_SUPPORTS);
     }
 }

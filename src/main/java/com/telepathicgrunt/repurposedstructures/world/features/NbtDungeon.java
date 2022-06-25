@@ -1,7 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.features;
 
 import com.mojang.serialization.Codec;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.mixin.structures.TemplateAccessor;
 import com.telepathicgrunt.repurposedstructures.utils.GeneralUtils;
 import com.telepathicgrunt.repurposedstructures.world.features.configs.NbtDungeonConfig;
@@ -55,7 +55,7 @@ public class NbtDungeon extends Feature<NbtDungeonConfig>{
         StructureTemplateManager structureTemplateManager = context.level().getLevel().getStructureManager();
         Optional<StructureTemplate> template = structureTemplateManager.get(nbtRL);
         if(template.isEmpty()) {
-            RepurposedStructures.LOGGER.error("Identifier to the specified nbt file was not found! : {}", nbtRL);
+            RepurposedStructuresApi.LOGGER.error("Identifier to the specified nbt file was not found! : {}", nbtRL);
             return false;
         }
         Rotation rotation = Rotation.getRandom(context.random());
@@ -302,7 +302,7 @@ public class NbtDungeon extends Feature<NbtDungeonConfig>{
                             RandomizableContainerBlockEntity.setLootTable(world, random, mutable, config.chestResourcelocation);
                             mutable.move(Direction.DOWN);
                             if(lootBlock.getBlock() == Blocks.SHULKER_BOX && world.getBlockEntity(mutable) == null) {
-                                EntityType<?> entity = RepurposedStructures.mobSpawnerManager.getSpawnerMob(config.rsSpawnerResourcelocation, random);
+                                EntityType<?> entity = RepurposedStructuresApi.mobSpawnerManager.getSpawnerMob(config.rsSpawnerResourcelocation, random);
                                 if (entity != null) {
                                     world.setBlock(mutable, Blocks.SPAWNER.defaultBlockState(), 2);
                                     BlockEntity blockEntity = world.getBlockEntity(mutable);

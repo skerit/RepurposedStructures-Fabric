@@ -1,7 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.features;
 
 import com.google.common.collect.ImmutableList;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.utils.GeneralUtils;
 import com.telepathicgrunt.repurposedstructures.world.features.configs.NbtFeatureConfig;
 import net.minecraft.core.BlockPos;
@@ -62,7 +62,7 @@ public class NbtFeature extends Feature<NbtFeatureConfig> {
         Optional<StructureTemplate> template = templatemanager.get(nbtRL);
 
         if (template.isEmpty()) {
-            RepurposedStructures.LOGGER.warn(context.config().nbtResourcelocationsAndWeights.toString() + " NTB does not exist!");
+            RepurposedStructuresApi.LOGGER.warn(context.config().nbtResourcelocationsAndWeights.toString() + " NTB does not exist!");
             return false;
         }
 

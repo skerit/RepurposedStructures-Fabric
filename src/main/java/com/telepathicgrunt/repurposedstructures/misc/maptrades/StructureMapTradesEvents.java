@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.misc.maptrades;
 
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -55,14 +55,14 @@ public final class StructureMapTradesEvents {
     }
 
     public static void onVillagerTradesEvent(Int2ObjectMap<List<VillagerTrades.ItemListing>> trades, String type) {
-        if (RepurposedStructures.structureMapManager.VILLAGER_MAP_TRADES.containsKey(type)) {
-            for (VillagerMapObj mapTrade : RepurposedStructures.structureMapManager.VILLAGER_MAP_TRADES.get(type)) {
+        if (RepurposedStructuresApi.structureMapManager.VILLAGER_MAP_TRADES.containsKey(type)) {
+            for (VillagerMapObj mapTrade : RepurposedStructuresApi.structureMapManager.VILLAGER_MAP_TRADES.get(type)) {
                 MapDecoration.Type icon;
                 try {
                     icon = MapDecoration.Type.valueOf(mapTrade.mapIcon.toUpperCase(Locale.ROOT));
                 }
                 catch (Exception e) {
-                    RepurposedStructures.LOGGER.error(e);
+                    RepurposedStructuresApi.LOGGER.error(e);
                     icon = MapDecoration.Type.MANSION;
                 }
 
@@ -79,14 +79,14 @@ public final class StructureMapTradesEvents {
     }
 
     public static void onWandererTradesEvent(List<VillagerTrades.ItemListing> generic, List<VillagerTrades.ItemListing> rare) {
-        for (Map.Entry<WanderingTraderMapObj.TRADE_TYPE, List<WanderingTraderMapObj>> tradeEntry : RepurposedStructures.structureMapManager.WANDERING_TRADER_MAP_TRADES.entrySet()) {
+        for (Map.Entry<WanderingTraderMapObj.TRADE_TYPE, List<WanderingTraderMapObj>> tradeEntry : RepurposedStructuresApi.structureMapManager.WANDERING_TRADER_MAP_TRADES.entrySet()) {
             for (WanderingTraderMapObj mapTrade : tradeEntry.getValue()) {
                 MapDecoration.Type icon;
                 try {
                     icon = MapDecoration.Type.valueOf(mapTrade.mapIcon.toUpperCase(Locale.ROOT));
                 }
                 catch (Exception e) {
-                    RepurposedStructures.LOGGER.error(e);
+                    RepurposedStructuresApi.LOGGER.error(e);
                     icon = MapDecoration.Type.MANSION;
                 }
 

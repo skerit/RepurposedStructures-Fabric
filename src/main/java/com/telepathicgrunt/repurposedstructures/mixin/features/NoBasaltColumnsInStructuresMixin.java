@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.mixin.features;
 
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.mixin.world.WorldGenRegionAccessor;
 import com.telepathicgrunt.repurposedstructures.modinit.RSTags;
 import net.minecraft.core.BlockPos;
@@ -35,7 +35,7 @@ public class NoBasaltColumnsInStructuresMixin {
 
         SectionPos sectionPos = SectionPos.of(mutableBlockPos);
         if (!levelAccessor.getChunk(sectionPos.x(), sectionPos.z()).getStatus().isOrAfter(ChunkStatus.STRUCTURE_REFERENCES)) {
-            RepurposedStructures.LOGGER.warn("Repurposed Structures: Detected a mod with a broken basalt columns configuredfeature that is trying to place blocks outside the 3x3 safe chunk area for features. Find the broken mod and report to them to fix the placement of their basalt columns feature.");
+            RepurposedStructuresApi.LOGGER.warn("Repurposed Structures: Detected a mod with a broken basalt columns configuredfeature that is trying to place blocks outside the 3x3 safe chunk area for features. Find the broken mod and report to them to fix the placement of their basalt columns feature.");
             return;
         }
 
