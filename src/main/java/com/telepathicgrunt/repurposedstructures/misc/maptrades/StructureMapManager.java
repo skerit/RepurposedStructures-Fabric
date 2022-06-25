@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class StructureMapManager extends SimpleJsonResourceReloadListener implements IdentifiableResourceReloadListener {
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().setLenient().disableHtmlEscaping().excludeFieldsWithoutExposeAnnotation().create();
-    private final ResourceLocation STRUCTURE_MAP_MANAGER_ID = new ResourceLocation(RepurposedStructures.MODID, "structure_map_manager");
+    private final ResourceLocation STRUCTURE_MAP_MANAGER_ID = new ResourceLocation(RepurposedStructuresApi.MODID, "structure_map_manager");
 
     public Map<String, List<VillagerMapObj>> VILLAGER_MAP_TRADES = new HashMap<>();
     public Map<WanderingTraderMapObj.TRADE_TYPE, List<WanderingTraderMapObj>> WANDERING_TRADER_MAP_TRADES = new HashMap<>();
@@ -37,7 +37,7 @@ public class StructureMapManager extends SimpleJsonResourceReloadListener implem
                 builderWandering.putAll(spawnerMobEntries.wanderingTraderMap);
             }
             catch (Exception e) {
-                RepurposedStructures.LOGGER.error("Repurposed Structures Error: Couldn't parse structure map file {}", fileIdentifier, e);
+                RepurposedStructuresApi.LOGGER.error("Repurposed Structures Error: Couldn't parse structure map file {}", fileIdentifier, e);
             }
         });
         VILLAGER_MAP_TRADES =  builderVillager.build();

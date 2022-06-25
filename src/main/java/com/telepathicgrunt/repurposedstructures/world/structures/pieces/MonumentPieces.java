@@ -1,7 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.structures.pieces;
 
 import com.google.common.collect.Lists;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -41,7 +41,7 @@ public class MonumentPieces {
         StructurePoolElement poolEntry;
 
         if(pool == null || pool.size() == 0) {
-            RepurposedStructures.LOGGER.warn("Repurposed Structures: Empty or nonexistent pool: {}  Will not generate monument piece at spot.", resourceLocation + " - Monument type: " + type);
+            RepurposedStructuresApi.LOGGER.warn("Repurposed Structures: Empty or nonexistent pool: {}  Will not generate monument piece at spot.", resourceLocation + " - Monument type: " + type);
             poolEntry = StructurePoolElement.empty().apply(StructureTemplatePool.Projection.RIGID);
         }
         else {
@@ -86,7 +86,7 @@ public class MonumentPieces {
 
             List<RoomGraph> graphList = this.generateRoomGraph(random);
             this.sourceRoom.claimed = true;
-            this.childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/rooms/core", getRoomPosition(coreRoom, 2), Rotation.NONE, random, type));
+            this.childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/rooms/core", getRoomPosition(coreRoom, 2), Rotation.NONE, random, type));
             List<MonumentPieces.MonumentRoomFitter> fitterList = Lists.newArrayList();
             fitterList.add(new MonumentPieces.FitDoubleXYRoom());
             fitterList.add(new MonumentPieces.FitDoubleYZRoom());
@@ -111,27 +111,27 @@ public class MonumentPieces {
 
             if (this.sourceRoom.hasOpening[Direction.WEST.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(this.sourceRoom, 1).offset(0, 1, 3);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/entrance_wall", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/entrance_wall", pos, Rotation.NONE, random, type));
             }
             if (this.sourceRoom.hasOpening[Direction.EAST.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(this.sourceRoom, 1).offset(6, 1, 3);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/entrance_wall", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/entrance_wall", pos, Rotation.NONE, random, type));
             }
             if (this.sourceRoom.hasOpening[Direction.NORTH.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(this.sourceRoom, 1).offset(3, 1, 0);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_1", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_1", pos, Rotation.NONE, random, type));
             }
             if (this.sourceRoom.hasOpening[Direction.UP.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(this.sourceRoom, 1).offset(2, 4, 2);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
             }
         }
 
         public void addMainBody(List<StructurePiece> pieces, Registry<StructureTemplatePool> poolRegistry, StructureTemplateManager StructureTemplateManager, RandomSource random, Rotation rotation, String type) {
-            pieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/body/ne_corner", new BlockPos(29, 0, 0), rotation, random, type));
-            pieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/body/nw_corner", new BlockPos(0, 0, 0), rotation, random, type));
-            pieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/body/se_corner", new BlockPos(29, 0, 29), rotation, random, type));
-            pieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/body/sw_corner", new BlockPos(0, 0, 29), rotation, random, type));
+            pieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/body/ne_corner", new BlockPos(29, 0, 0), rotation, random, type));
+            pieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/body/nw_corner", new BlockPos(0, 0, 0), rotation, random, type));
+            pieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/body/se_corner", new BlockPos(29, 0, 29), rotation, random, type));
+            pieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/body/sw_corner", new BlockPos(0, 0, 29), rotation, random, type));
         }
 
         private List<RoomGraph> generateRoomGraph(RandomSource random) {
@@ -264,7 +264,7 @@ public class MonumentPieces {
         public StructurePiece create(Registry<StructureTemplatePool> poolRegistry, StructureTemplateManager StructureTemplateManager, Rotation rotation, RoomGraph roomGraph, RandomSource random, String type) {
             roomGraph.claimed = true;
             roomGraph.connections[Direction.EAST.get3DDataValue()].claimed = true;
-            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/rooms/double_x", getRoomPosition(roomGraph, 1), rotation, random, type);
+            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/rooms/double_x", getRoomPosition(roomGraph, 1), rotation, random, type);
         }
 
         @Override
@@ -285,7 +285,7 @@ public class MonumentPieces {
                         else if (rotation == Rotation.NONE) {
                             pos = pos.offset(0, 0, 1);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
                     }
                 }
                 if (direction != Direction.WEST) {
@@ -303,18 +303,18 @@ public class MonumentPieces {
                         else if (rotation == Rotation.NONE) {
                             pos = pos.offset(0, 0, 1);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
                     }
                 }
             }
 
             if (roomGraph.hasOpening[Direction.UP.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(roomGraph, 2).offset(2, 4, 10);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
             }
             if (roomGraph.connections[Direction.EAST.get3DDataValue()].hasOpening[Direction.UP.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(roomGraph, 2).offset(10, 4, 10);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
             }
         }
     }
@@ -337,7 +337,7 @@ public class MonumentPieces {
             roomGraph.connections[Direction.EAST.get3DDataValue()].claimed = true;
             roomGraph.connections[Direction.UP.get3DDataValue()].claimed = true;
             roomGraph.connections[Direction.EAST.get3DDataValue()].connections[Direction.UP.get3DDataValue()].claimed = true;
-            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/rooms/double_xy", getRoomPosition(roomGraph, 1), rotation, random, type);
+            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/rooms/double_xy", getRoomPosition(roomGraph, 1), rotation, random, type);
         }
 
         @Override
@@ -358,7 +358,7 @@ public class MonumentPieces {
                         else if (rotation == Rotation.NONE) {
                             pos = pos.offset(0, 0, 1);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
                     }
 
                     if (roomGraph.connections[Direction.UP.get3DDataValue()].hasOpening[direction.get3DDataValue()]) {
@@ -375,7 +375,7 @@ public class MonumentPieces {
                         else if (rotation == Rotation.NONE) {
                             pos = pos.offset(0, 0, 1);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
                     }
                 }
                 if (direction != Direction.WEST) {
@@ -393,7 +393,7 @@ public class MonumentPieces {
                         else if (rotation == Rotation.NONE) {
                             pos = pos.offset(0, 0, 1);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
                     }
 
                     if (roomGraph.connections[Direction.UP.get3DDataValue()].connections[Direction.EAST.get3DDataValue()].hasOpening[direction.get3DDataValue()]) {
@@ -410,18 +410,18 @@ public class MonumentPieces {
                         else if (rotation == Rotation.NONE) {
                             pos = pos.offset(0, 0, 1);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
                     }
                 }
             }
 
             if (roomGraph.connections[Direction.UP.get3DDataValue()].hasOpening[Direction.UP.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(roomGraph, 2).offset(2, 8, 10);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
             }
             if (roomGraph.connections[Direction.UP.get3DDataValue()].connections[Direction.EAST.get3DDataValue()].hasOpening[Direction.UP.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(roomGraph, 2).offset(10, 8, 10);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
             }
         }
     }
@@ -436,7 +436,7 @@ public class MonumentPieces {
         public StructurePiece create(Registry<StructureTemplatePool> poolRegistry, StructureTemplateManager StructureTemplateManager, Rotation rotation, RoomGraph roomGraph, RandomSource random, String type) {
             roomGraph.claimed = true;
             roomGraph.connections[Direction.UP.get3DDataValue()].claimed = true;
-            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/rooms/double_y", getRoomPosition(roomGraph, 1), rotation, random, type);
+            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/rooms/double_y", getRoomPosition(roomGraph, 1), rotation, random, type);
         }
 
         @Override
@@ -459,7 +459,7 @@ public class MonumentPieces {
                     else {
                         pos = pos.offset(-2, 0, 1);
                     }
-                    childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/arch", pos, rotation, random, type));
+                    childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/arch", pos, rotation, random, type));
                 }
 
                 if (roomGraph.connections[Direction.UP.get3DDataValue()].hasOpening[direction.get3DDataValue()]) {
@@ -479,13 +479,13 @@ public class MonumentPieces {
                     else {
                         pos = pos.offset(-2, 0, 1);
                     }
-                    childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/arch", pos, rotation, random, type));
+                    childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/arch", pos, rotation, random, type));
                 }
             }
 
             if (roomGraph.connections[Direction.UP.ordinal()].hasOpening[Direction.UP.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(roomGraph, 1).offset(2, 8, 2);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
             }
         }
     }
@@ -508,7 +508,7 @@ public class MonumentPieces {
             roomGraph.connections[Direction.NORTH.get3DDataValue()].claimed = true;
             roomGraph.connections[Direction.UP.get3DDataValue()].claimed = true;
             roomGraph.connections[Direction.NORTH.get3DDataValue()].connections[Direction.UP.get3DDataValue()].claimed = true;
-            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/rooms/double_yz", getRoomPosition(roomGraph, 2), rotation, random, type);
+            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/rooms/double_yz", getRoomPosition(roomGraph, 2), rotation, random, type);
         }
 
         @Override
@@ -526,7 +526,7 @@ public class MonumentPieces {
                         else if (rotation == Rotation.CLOCKWISE_180) {
                             pos = pos.offset(0, 0, -1);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
                     }
 
                     if (roomGraph.connections[Direction.UP.get3DDataValue()].hasOpening[direction.get3DDataValue()]) {
@@ -543,7 +543,7 @@ public class MonumentPieces {
                         else if (rotation == Rotation.COUNTERCLOCKWISE_90) {
                             pos = pos.offset(1, 0, 2);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_shelf", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_shelf", pos, rotation, random, type));
                     }
                 }
                 if (direction != Direction.SOUTH) {
@@ -561,7 +561,7 @@ public class MonumentPieces {
                         else if (rotation == Rotation.COUNTERCLOCKWISE_90) {
                             pos = pos.offset(1, 0, 0);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
                     }
 
                     if (roomGraph.connections[Direction.UP.get3DDataValue()].connections[Direction.NORTH.get3DDataValue()].hasOpening[direction.get3DDataValue()]) {
@@ -578,18 +578,18 @@ public class MonumentPieces {
                         else if (rotation == Rotation.COUNTERCLOCKWISE_90) {
                             pos = pos.offset(3, 0, 0);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_shelf", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_shelf", pos, rotation, random, type));
                     }
                 }
             }
 
             if (roomGraph.connections[Direction.UP.get3DDataValue()].hasOpening[Direction.UP.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(roomGraph, 2).offset(2, 8, 10);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
             }
             if (roomGraph.connections[Direction.UP.get3DDataValue()].connections[Direction.NORTH.get3DDataValue()].hasOpening[Direction.UP.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(roomGraph, 2).offset(2, 8, 2);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
             }
         }
     }
@@ -609,7 +609,7 @@ public class MonumentPieces {
 
             roomGraph1.claimed = true;
             roomGraph1.connections[Direction.NORTH.get3DDataValue()].claimed = true;
-            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/rooms/double_z", getRoomPosition(roomGraph, 2), rotation, random, type);
+            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/rooms/double_z", getRoomPosition(roomGraph, 2), rotation, random, type);
         }
 
         @Override
@@ -627,7 +627,7 @@ public class MonumentPieces {
                         else if (rotation == Rotation.CLOCKWISE_180) {
                             pos = pos.offset(0, 0, -1);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
                     }
                 }
                 if (direction != Direction.SOUTH) {
@@ -645,18 +645,18 @@ public class MonumentPieces {
                         else if (rotation == Rotation.COUNTERCLOCKWISE_90) {
                             pos = pos.offset(1, 0, 0);
                         }
-                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
+                        childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_3", pos, rotation, random, type));
                     }
                 }
             }
 
             if (roomGraph.hasOpening[Direction.UP.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(roomGraph, 2).offset(2, 4, 2);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
             }
             if (roomGraph.connections[Direction.NORTH.get3DDataValue()].hasOpening[Direction.UP.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(roomGraph, 2).offset(2, 4, 10);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
             }
         }
     }
@@ -670,7 +670,7 @@ public class MonumentPieces {
         @Override
         public StructurePiece create(Registry<StructureTemplatePool> poolRegistry, StructureTemplateManager StructureTemplateManager, Rotation rotation, RoomGraph roomGraph, RandomSource random, String type) {
             roomGraph.claimed = true;
-            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/rooms/simple", getRoomPosition(roomGraph, 1), rotation, random, type);
+            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/rooms/simple", getRoomPosition(roomGraph, 1), rotation, random, type);
         }
 
         @Override
@@ -690,13 +690,13 @@ public class MonumentPieces {
                     else if (rotation == Rotation.COUNTERCLOCKWISE_90) {
                         pos = pos.offset(0, 0, 1);
                     }
-                    childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_1", pos, rotation, random, type));
+                    childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_1", pos, rotation, random, type));
                 }
             }
 
             if (roomGraph.hasOpening[Direction.UP.get3DDataValue()]) {
                 BlockPos pos = getRoomPosition(roomGraph, 1).offset(2, 4, 2);
-                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
+                childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/floor", pos, Rotation.NONE, random, type));
             }
         }
     }
@@ -716,7 +716,7 @@ public class MonumentPieces {
         @Override
         public StructurePiece create(Registry<StructureTemplatePool> poolRegistry, StructureTemplateManager StructureTemplateManager, Rotation rotation, RoomGraph roomGraph, RandomSource random, String type) {
             roomGraph.claimed = true;
-            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/rooms/simple_pillar", getRoomPosition(roomGraph, 1), rotation, random, type);
+            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/rooms/simple_pillar", getRoomPosition(roomGraph, 1), rotation, random, type);
         }
 
         @Override
@@ -736,7 +736,7 @@ public class MonumentPieces {
                     else if (rotation == Rotation.COUNTERCLOCKWISE_90) {
                         pos = pos.offset(0, 0, 1);
                     }
-                    childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/" + type + "/openings/wall_1", pos, rotation, random, type));
+                    childPieces.add(getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/" + type + "/openings/wall_1", pos, rotation, random, type));
                 }
             }
         }
@@ -751,7 +751,7 @@ public class MonumentPieces {
         @Override
         public StructurePiece create(Registry<StructureTemplatePool> poolRegistry, StructureTemplateManager StructureTemplateManager, Rotation rotation, RoomGraph roomGraph, RandomSource random, String type) {
             roomGraph.claimed = true;
-            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructures.MODID + ":monuments/"+type+"/rooms/simple_top", getRoomPosition(roomGraph, 1), rotation, random, type);
+            return getJigsawPiece(poolRegistry, StructureTemplateManager, RepurposedStructuresApi.MODID + ":monuments/"+type+"/rooms/simple_top", getRoomPosition(roomGraph, 1), rotation, random, type);
         }
 
         @Override

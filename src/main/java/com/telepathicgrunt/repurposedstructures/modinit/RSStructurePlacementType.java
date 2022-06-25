@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.modinit;
 
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.world.structures.placements.AdvancedRandomSpread;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +13,6 @@ public final class RSStructurePlacementType {
     public static final StructurePlacementType<AdvancedRandomSpread> ADVANCED_RANDOM_SPREAD = () -> AdvancedRandomSpread.CODEC;
 
     public static void registerStructurePlacementTypes() {
-        Registry.register(Registry.STRUCTURE_PLACEMENT_TYPE, new ResourceLocation(RepurposedStructures.MODID, "advanced_random_spread"), ADVANCED_RANDOM_SPREAD);
+        Registry.register(Registry.STRUCTURE_PLACEMENT_TYPE, new ResourceLocation(RepurposedStructuresApi.MODID, "advanced_random_spread"), ADVANCED_RANDOM_SPREAD);
     }
 }

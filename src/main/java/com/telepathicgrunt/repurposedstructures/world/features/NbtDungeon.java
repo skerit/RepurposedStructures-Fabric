@@ -1,7 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.features;
 
 import com.mojang.serialization.Codec;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.mixin.structures.TemplateAccessor;
 import com.telepathicgrunt.repurposedstructures.utils.GeneralUtils;
 import com.telepathicgrunt.repurposedstructures.world.features.configs.NbtDungeonConfig;
@@ -54,7 +54,7 @@ public class NbtDungeon extends Feature<NbtDungeonConfig>{
         StructureTemplateManager structureTemplateManager = context.level().getLevel().getStructureManager();
         Optional<StructureTemplate> template = structureTemplateManager.get(nbtRL);
         if(template.isEmpty()) {
-            RepurposedStructures.LOGGER.error("Identifier to the specified nbt file was not found! : {}", nbtRL);
+            RepurposedStructuresApi.LOGGER.error("Identifier to the specified nbt file was not found! : {}", nbtRL);
             return false;
         }
         Rotation rotation = Rotation.getRandom(context.random());
@@ -180,12 +180,12 @@ public class NbtDungeon extends Feature<NbtDungeonConfig>{
      * Makes the given block entity now have the correct spawner mob
      */
     private void SetMobSpawnerEntity(RandomSource random, NbtDungeonConfig config, SpawnerBlockEntity blockEntity) {
-        EntityType<?> entity = RepurposedStructures.mobSpawnerManager.getSpawnerMob(config.rsSpawnerResourcelocation, random);
+        EntityType<?> entity = RepurposedStructuresApi.mobSpawnerManager.getSpawnerMob(config.rsSpawnerResourcelocation, random);
         if(entity != null) {
             blockEntity.getSpawner().setEntityId(entity);
         }
         else{
-            RepurposedStructures.LOGGER.warn("EntityType in a dungeon does not exist in registry! : {}", config.rsSpawnerResourcelocation);
+            RepurposedStructuresApi.LOGGER.warn("EntityType in a dungeon does not exist in registry! : {}", config.rsSpawnerResourcelocation);
         }
     }
 

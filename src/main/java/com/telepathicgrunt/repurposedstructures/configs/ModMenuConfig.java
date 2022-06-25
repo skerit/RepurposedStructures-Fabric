@@ -1,7 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.configs;
 
 
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import eu.midnightdust.lib.config.MidnightConfig;
@@ -12,6 +12,6 @@ import net.fabricmc.api.Environment;
 public class ModMenuConfig implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> MidnightConfig.getScreen(parent, RepurposedStructures.MODID);
+        return parent -> MidnightConfig.getScreen(parent, RepurposedStructuresApi.MODID);
     }
 }

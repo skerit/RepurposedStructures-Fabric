@@ -2,7 +2,7 @@ package com.telepathicgrunt.repurposedstructures.world.processors;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
@@ -94,7 +94,7 @@ public class SpawnerRandomizingProcessor extends StructureProcessor {
      * Makes the given block entity now have the correct spawner mob
      */
     private CompoundTag SetMobSpawnerEntity(RandomSource random, CompoundTag nbt) {
-        EntityType<?> entity = RepurposedStructures.mobSpawnerManager.getSpawnerMob(rsSpawnerResourcelocation, random);
+        EntityType<?> entity = RepurposedStructuresApi.mobSpawnerManager.getSpawnerMob(rsSpawnerResourcelocation, random);
         if(entity != null) {
             ResourceLocation entityRL = Registry.ENTITY_TYPE.getKey(entity);
 

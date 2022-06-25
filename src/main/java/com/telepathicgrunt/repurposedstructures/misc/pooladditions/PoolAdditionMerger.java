@@ -7,7 +7,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.misc.structurepiececounter.JSONConditionsRegistry;
 import com.telepathicgrunt.repurposedstructures.mixin.structures.ListPoolElementAccessor;
 import com.telepathicgrunt.repurposedstructures.mixin.structures.SinglePoolElementAccessor;
@@ -75,7 +75,7 @@ public final class PoolAdditionMerger {
                             .ifPresent(validPool -> mergeIntoExistingPool(validPool, poolRegistry.get(entry.getKey()), structureTemplateManager));
                 }
                 catch (Exception e) {
-                    RepurposedStructures.LOGGER.error("""
+                    RepurposedStructuresApi.LOGGER.error("""
 
                             Repurposed Structures: Pool Addition json failed to be parsed.
                             This is usually due to using a mod compat datapack without the other mod being on.
@@ -105,7 +105,7 @@ public final class PoolAdditionMerger {
                 if(nbtID.isEmpty()) continue;
                 Optional<StructureTemplate> structureTemplate = structureTemplateManager.get(nbtID.get());
                 if(structureTemplate.isEmpty()) {
-                    RepurposedStructures.LOGGER.error("(Repurposed Structures POOL MERGER) Found an entry in {} that points to the non-existent nbt file called {}", feedingPool.getName(), nbtID.get());
+                    RepurposedStructuresApi.LOGGER.error("(Repurposed Structures POOL MERGER) Found an entry in {} that points to the non-existent nbt file called {}", feedingPool.getName(), nbtID.get());
                 }
             }
             else if(element instanceof ListPoolElement listPoolElement) {
@@ -115,7 +115,7 @@ public final class PoolAdditionMerger {
                         if (nbtID.isEmpty()) continue;
                         Optional<StructureTemplate> structureTemplate = structureTemplateManager.get(nbtID.get());
                         if (structureTemplate.isEmpty()) {
-                            RepurposedStructures.LOGGER.error("(Repurposed Structures POOL MERGER) Found an entry in {} that points to the non-existent nbt file called {}", feedingPool.getName(), nbtID.get());
+                            RepurposedStructuresApi.LOGGER.error("(Repurposed Structures POOL MERGER) Found an entry in {} that points to the non-existent nbt file called {}", feedingPool.getName(), nbtID.get());
                         }
                     }
                 }
@@ -130,7 +130,7 @@ public final class PoolAdditionMerger {
      * Log out the pool that failed to be parsed and what the error is.
      */
     private static void logBadData(ResourceLocation poolPath, String messageString) {
-        RepurposedStructures.LOGGER.error("(Repurposed Structures POOL MERGER) Failed to parse {} additions file. Error is: {}", poolPath, messageString);
+        RepurposedStructuresApi.LOGGER.error("(Repurposed Structures POOL MERGER) Failed to parse {} additions file. Error is: {}", poolPath, messageString);
     }
 
 
@@ -157,7 +157,7 @@ public final class PoolAdditionMerger {
                         return optionalSupplier.get().get();
                     }
                     else {
-                        RepurposedStructures.LOGGER.error("Repurposed Structures Error: Found {} entry has a condition that does not exist. Extra info: {}", resourceLocation, resourceLocation2);
+                        RepurposedStructuresApi.LOGGER.error("Repurposed Structures Error: Found {} entry has a condition that does not exist. Extra info: {}", resourceLocation, resourceLocation2);
                     }
                 }
                 return true;

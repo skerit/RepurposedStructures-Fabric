@@ -3,7 +3,7 @@ package com.telepathicgrunt.repurposedstructures.world.processors;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
+import com.telepathicgrunt.repurposedstructures.RepurposedStructuresApi;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
@@ -19,7 +19,6 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 /**
  * Replace blocks randomly but preserve the properties of the block
@@ -72,7 +71,7 @@ public class RandomReplaceWithPropertiesProcessor extends StructureProcessor {
                     return new StructureTemplate.StructureBlockInfo(infoIn2.pos, newBlockState, infoIn2.nbt);
                 }
                 else{
-                    RepurposedStructures.LOGGER.warn("Repurposed Structures: repurposed_structures:random_replace_with_properties_processor in a processor file has no replacement block of any kind.");
+                    RepurposedStructuresApi.LOGGER.warn("Repurposed Structures: repurposed_structures:random_replace_with_properties_processor in a processor file has no replacement block of any kind.");
                 }
             }
         }
