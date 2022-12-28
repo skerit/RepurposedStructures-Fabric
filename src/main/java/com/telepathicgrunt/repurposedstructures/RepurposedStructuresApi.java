@@ -8,7 +8,6 @@ import com.telepathicgrunt.repurposedstructures.misc.maptrades.StructureMapTrade
 import com.telepathicgrunt.repurposedstructures.misc.mobspawners.MobSpawnerManager;
 import com.telepathicgrunt.repurposedstructures.misc.pooladditions.PoolAdditionMerger;
 import com.telepathicgrunt.repurposedstructures.misc.structurepiececounter.StructurePieceCountsManager;
-import com.telepathicgrunt.repurposedstructures.modinit.RSFeatures;
 import com.telepathicgrunt.repurposedstructures.modinit.RSPlacements;
 import com.telepathicgrunt.repurposedstructures.modinit.RSPredicates;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
@@ -38,7 +37,6 @@ public class RepurposedStructuresApi implements ModInitializer {
         MidnightConfig.init(MODID, RSModdedLootConfig.class);
 
         RSTags.initTags();
-        RSFeatures.registerFeatures();
         RSPlacements.registerPlacements();
         RSProcessors.registerProcessors();
         RSPredicates.registerPredicates();
